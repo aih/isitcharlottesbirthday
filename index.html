@@ -1,0 +1,44 @@
+<html>
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+    <style>
+    body{
+      text-align:center;
+   } 
+   #pagetitle{
+     margin-top: 20px;
+     font-weight: bold;
+     font-size: 30pt;
+    font-family: Arial, sans-serif;
+    text-decoration: none;
+    color: black;
+   }
+    .answer{
+    display: inline-block;
+    margin-top: 200px;
+    font-weight: bold;
+    font-size: 120pt;
+    font-family: Arial, sans-serif;
+    text-decoration: none;
+    color: black;
+    }
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+  </style>
+<body ng-app="myApp" ng-controller="birthdayController" ng-cloak>
+  <div id="pagetitle">Is it Charlotte's Birthday?</div>
+<div id="no" class="answer" ng-if="!isBirthday">NO</div>
+<div id="yes" class="answer" ng-if="isBirthday">YES</div>
+<div ng-hide=true >{{date.getMonth()}}-{{date.getDate()}}</div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+<script>
+var myApp = angular.module('myApp',[]);
+
+myApp.controller('birthdayController', ['$scope', function($scope) {
+  $scope.date = new Date() ;
+  $scope.isBirthday = ($scope.date.getMonth()==3)&&($scope.date.getDate()==3);
+}]);
+</script>
+</body>
+</html>
